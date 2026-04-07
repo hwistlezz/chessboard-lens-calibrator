@@ -3,6 +3,29 @@ import numpy as np
 from pathlib import Path
 
 
+def draw_outlined_text(img, text, org, color, font_scale=1.0,
+                       inner_thickness=2, outer_thickness=5):
+    cv.putText(
+        img,
+        text,
+        org,
+        cv.FONT_HERSHEY_SIMPLEX,
+        font_scale,
+        (0, 0, 0),   # 검정 외곽선
+        outer_thickness,
+        cv.LINE_AA
+    )
+    cv.putText(
+        img,
+        text,
+        org,
+        cv.FONT_HERSHEY_SIMPLEX,
+        font_scale,
+        color,       # 실제 글자 색
+        inner_thickness,
+        cv.LINE_AA
+    )
+
 # =========================
 # User Settings
 # =========================
@@ -100,24 +123,24 @@ def main():
         original_disp = frame.copy()
         rectified_disp = rectified.copy()
 
-        cv.putText(
+        draw_outlined_text(
             original_disp,
             "Original",
-            (20, 40),
-            cv.FONT_HERSHEY_SIMPLEX,
-            1.0,
-            (0, 0, 255),
-            2
+            (25, 45),
+            (0, 0, 255),  # 빨강
+            font_scale=1.0,
+            inner_thickness=2,
+            outer_thickness=5
         )
 
-        cv.putText(
+        draw_outlined_text(
             rectified_disp,
             "Rectified",
-            (20, 40),
-            cv.FONT_HERSHEY_SIMPLEX,
-            1.0,
-            (0, 255, 0),
-            2
+            (25, 45),
+            (0, 255, 0),  # 초록
+            font_scale=1.0,
+            inner_thickness=2,
+            outer_thickness=5
         )
 
         comparison = np.hstack((original_disp, rectified_disp))
