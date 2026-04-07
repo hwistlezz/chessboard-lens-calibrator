@@ -154,7 +154,7 @@ BOARD_CELL_SIZE = 0.025
 
 왼쪽은 원본 영상이고, 오른쪽은 왜곡 보정 후 영상입니다.
 
-![distortion_comparison](https://github.com/user-attachments/assets/7b8be233-4fa3-4984-934c-5ccb4cef57bc)
+![distortion_comparison](https://github.com/user-attachments/assets/02a2801b-789d-4c27-be9e-db8896bb40de)
 
 ---
 
